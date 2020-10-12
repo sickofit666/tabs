@@ -37,7 +37,7 @@ Tabs.Wilds = {
 			t.wildList[c] = [];
 			var castle = getMaxWilds(city.id);
 			var totw = 0;
-			if (theTypeof(cWilds) == 'object') {
+			if (matTypeof(cWilds) == 'object') {
 				for (var k in cWilds)
 				++totw;
 			}
