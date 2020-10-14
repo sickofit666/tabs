@@ -1,13 +1,12 @@
 /*************** AUTODF Tab **********/
 // @tabversion 2.0
 Tabs.Barb = {
-	MaxVersion: '2.0',
-  tabLabel: 'darkForest',
+  tabLabel: unsafeWindow.g_js_strings.commonstr.darkForest,
 	tabOrder: 8000,
 	tabColor : 'gray',
   myDiv : null,
   MapAjax : new CMapAjax(),
-  BlockList : [],
+  BlockList : [], 
   Blocks : [],
   popFirst : true,
   opt : {},
@@ -62,12 +61,10 @@ Tabs.Barb = {
   barbMaxKnight         : 300,
   threshold          : 750000,
   },
-
-init : function (div){
-		var t = Tabs.Barb;
-
-		t.myDiv = div;
-
+    
+  init : function (div){
+    var t = Tabs.Barb;
+	
 	if (!Options.DFOptions) {
 		Options.DFOptions = t.Options;
 	}
@@ -75,25 +72,21 @@ init : function (div){
 		for (var y in t.Options) {
 			if (!Options.DFOptions.hasOwnProperty(y)) {
 				Options.DFOptions[y] = t.Options[y];
-			}
+			}	
 		}
 	}
-	if (parseFloat(Version) < parseFloat(t.MaxVersion)) {
-			div.innerHTML = '<center>'+tx('Maximum script version for darkForest tab is '+t.MaxVersion)+'</center>';
-			actionLog('Maximum script version for darkForest tab is '+t.MaxVersion,'darkForest');
-			return;
-		}
+	
     if(Options.DFOptions.dfbtns)AddSubTabLink(unsafeWindow.g_js_strings.commonstr.darkForest,t.toggleBarbState, 'DFToggleTab');
-
-
+    t.myDiv = div;
+ 
 	for (var ui in unsafeWindow.cm.UNIT_TYPES){
 		var i = unsafeWindow.cm.UNIT_TYPES[ui];
 		var trp = [];
 		trp.push(unsafeWindow.unitcost['unt'+i][0]);
 		trp.push(i);
-		t.troopDef.push(trp);
+		t.troopDef.push(trp); 
 	}
-
+	
     var m = '<DIV id=pbTowrtDivF class=divHeader align=center>AUTOMATED FOREST FUNCTION</div><TABLE id=pbbarbingfunctions width=100% height=0% class=pbTab><TR align="center">';
      if (Options.DFOptions.Running == false) {
            m += '<TD><INPUT id=AttSearch type=submit value="Attack = OFF"></td>';
@@ -106,9 +99,9 @@ init : function (div){
       m += '<TD><INPUT id=Options type=submit value="Options"></td>';
       m += '<TD><INPUT id=StopSearch type=submit value="Stop Current Search"></td>';
       m += '</tr></table></div>';
-
+      
       m += '<DIV id=pbTraderDivD class=divHeader align=center>FOREST STATS</div>';
-
+    
       m += '<TABLE id=pbbarbstats width=95% height=0% class=pbTab><TR align="left"><TR>';
       for(i=0;i<Seed.cities.length;i++){
               m += '<TD>' + Seed.cities[i][1] +'</td>';
@@ -150,13 +143,13 @@ init : function (div){
         if (t.barbArray[i+1] == undefined) document.getElementById(element).innerHTML = 'No Data';
         else document.getElementById(element).innerHTML =  'Forests:' + t.barbArray[i+1].length;
      }
-
+    
     for(i=0;i<Seed.cities.length;i++){
         for (w=1;w<=15;w++){
             document.getElementById('pbcity'+i+'level'+w).checked = Options.DFOptions.Levels[i+1][w];
         }
     }
-
+    
     document.getElementById('AttSearch').addEventListener('click', function(){t.toggleBarbState(this)} , false);
     document.getElementById('Options').addEventListener('click', t.barbOptions , false);
     document.getElementById('StopSearch').addEventListener('click', t.callStop , false);
@@ -166,31 +159,31 @@ init : function (div){
         element_class[k].addEventListener('click', t.saveLevelOptions , false);
     }
    },
-
+  
   saveLevelOptions : function(){
         for(i=0;i<Seed.cities.length;i++){
             Options.DFOptions.Levels[i+1][0]=false;
             for (w=1;w<=15;w++){
                 var ele = document.getElementById('pbcity'+i+'level'+w);
                 Options.DFOptions.Levels[i+1][w]=ele.checked;
-                if (ele.checked)
+                if (ele.checked)                    
                     Options.DFOptions.Levels[i+1][0]=true;
-            }
+            }        
         }
         saveOptions();
    },
-
+   
   troopOptions: function(){
   	 var t = Tabs.Barb;
          var troopDef = t.troopDef;
-  	 if(t.troopselect == null)
+  	 if(t.troopselect == null)	
          t.troopselect = new CPopup ('pbtroopselect', 0, 0, 980, 650, true, function(){t.saveTroops();});
-  	 t.troopselect.centerMe (mainPop.getMainDiv());
-  	 var z= '<DIV id=pbTraderDivD class=divHeader align=center>TROOP SELECTION</div><TABLE width=100%><TR>';
+  	 t.troopselect.centerMe (mainPop.getMainDiv());  
+  	 	 var z= '<DIV id=pbTraderDivD class=pbStat>TROOP SELECTION</div><TABLE width:100%; overflow-x:scroll;"><TR>';
 	 z+='<TD></td>';
 	 for(var j=0; j<15; j++)
-		z+='<td class="xtab">Level '+(j+1)+'</td>';
-	 z+='</tr>';
+		z+='<TD><font color="#000000">Level '+(j+1)+'</td>';
+	 z+='</tr>';		 		
 
 	 for(i=0;i<troopDef.length;i++){
 	 	z += '<TR><TD align=center><img src="'+IMGURL+'units/unit_'+troopDef[i][1]+'_30.jpg" title="'+troopDef[i][0]+'"></td>';
@@ -198,49 +191,49 @@ init : function (div){
 			if (!Options.DFOptions.Troops[j+1]) Options.DFOptions.Troops[j+1] = {};
              z += '<TD><INPUT id="level'+j+'troop'+i+'" type=text size=5 maxlength=6 value="'+(Options.DFOptions.Troops[j+1][i+1]?Options.DFOptions.Troops[j+1][i+1]:0)+'" /></td>';
 	 	}
-	 	z+='</tr>';
+	 	z+='</tr>';		 		
 	 }
 
-	 z+='<td class="xtab">MIN dist</td>';
+	 z+='<TR><TD>MIN dist</td>';		 		
 	 for(var j=0; j<15; j++){
 	 	z+='<TD><INPUT id=Mindist'+j+' type=text size=3 maxlength=3 value="'+Options.DFOptions.MinDistance[j+1]+'"</td>';
 	 }
-	 z+='</tr>';
-	 z+='<td class="xtab">MAX dist</td>';
+	 z+='</tr>';		 		
+	 z+='<TR><TD>MAX dist</td>';		 		
 	 for(var j=0; j<15; j++){
 	 	z+='<TD><INPUT id=dist'+j+' type=text size=3 maxlength=3 value="'+Options.DFOptions.Distance[j+1]+'"</td>';
 	 }
-	 z+='</tr>';
+	 z+='</tr>';		 		
 	 z+='</table>';
 	 t.troopselect.getMainDiv().innerHTML = z;
 	 t.troopselect.show(true);
-  },
+  },  
   barbOptions: function(){
        var t = Tabs.Barb;
-       if(t.barboptions == null)
-        t.barboptions = new CPopup ('btbarboptions', 0,0, 400,400, true);
-       t.barboptions.centerMe (mainPop.getMainDiv());
+       if(t.barboptions == null)    
+        t.barboptions = new CPopup ('pbbarboptions', 0,0, 400,400, true);
+       t.barboptions.centerMe (mainPop.getMainDiv());  
      t.barboptions.getTopDiv().innerHTML = '<CENTER><b>Dark Forest Options for server '+getServerId()+'</b></CENTER>';
       var y = '<DIV style="max-height:400px; overflow-y:auto;"><DIV class=divHeader align=center>OPTIONS</div><TABLE width=100%>';
        y +='<TR><TD style="margin-top:5px; text-align:center;"><INPUT id=pbresetbarbs type=submit value="Reset Forests"></td>';
        y +='<TD style="margin-top:5px; text-align:center;"><INPUT id=pbpaintbarbs type=submit value="Show forests"></td>';
        y += '<TD><SELECT id=pbcity type=list></td></tr></table>';
-       y +='<table width=75%><TD colspan=2 style="margin-top:5px; text-align:center;"><DIV class=pbStat> OPTIONS </div></td>';
-     y +='<td class="xtab">Attack interval: <td class="xtab"><INPUT id=pbsendint type=text size=4 maxlength=3 value='+ Options.DFOptions.SendInterval +' \> seconds</B></DIV>';
-     y +='<td class="xtab">Max search distance: <td class="xtab"><INPUT id=pbmaxdist type=text size=4 maxlength=3 value='+ Options.DFOptions.MaxDistance +' \></td></tr>';
-     y +='<td class="xtab">Keep rallypoint slot(s) free: <td class="xtab"><INPUT id=rallyclip type=text size=3 maxlength=2 value="'+Options.DFOptions.RallyClip+'" \> </td></tr>';
-     y +='<td class="xtab"><INPUT id=pbreset type=checkbox '+(Options.DFOptions.UpdateEnabled?'CHECKED':'')+'\> Reset search every<tr><td class="xtab"><INPUT id=pbresetint type=text size=4 maxlength=3 value='+Options.DFOptions.UpdateInterval+' \>minutes</td></tr>';
-     y +='<td class="xtab">Skip city search after  <td class="xtab"><INPUT id=barbstopsearch type=text size=3 value='+Options.DFOptions.stopsearch+' \> tries.</td></tr>';
-     y +='<td class="xtab">Method :  <td class="xtab"> '+htmlSelector({distance:'Closest first', level:'Highest level first', lowlevel:'Lowest level first'}, Options.DFOptions.Method, 'id=pbmethod')+'</td></tr>';
-     y +='<td class="xtab">Knight priority :  <td class="xtab">'+htmlSelector({0:'Lowest combat skill', 1:'Highest combat skill'}, Options.DFOptions.knightselector, 'id=barbknight')+'</td></tr>';
-     y +='<td class="xtab">Minimum knight Combat level to send: <td class="xtab"><input id=barbMinKnight type=text size=3 value='+Options.DFOptions.barbMinKnight+' \></td></tr>';
-     y +='<td class="xtab">Maximum knight Combat level to send: <td class="xtab"><input id=barbMaxKnight type=text size=3 value='+Options.DFOptions.barbMaxKnight+' \></td></tr>';
-     y +='<td class="xtab">Stop hitting Dark forests when Aetherstone in city is more than:  <td class="xtab"><INPUT id=pbaothreshold type=text size=7 maxlength=8 value='+ Options.DFOptions.threshold +' \></td></tr>';
-     y +='<td class="xtab">Add toggle button:  <td class="xtab"><INPUT id=pbdftoggle type=checkbox '+(Options.DFOptions.dfbtns?'CHECKED':'')+' \></td></tr>';
+       y +='<table width=100%><TD colspan=2 style="margin-top:5px; text-align:center;"><DIV class=pbStat> OPTIONS </div></td>';
+     y +='<TR><TD><font color="#000000">Attack interval: </td><td><INPUT id=pbsendint type=text size=4 maxlength=3 value='+ Options.DFOptions.SendInterval +' \> <font color="#000000">seconds</td></tr>';
+     y +='<TR><TD><font color="#000000">Max search distance: </td><td><INPUT id=pbmaxdist type=text size=4 maxlength=3 value='+ Options.DFOptions.MaxDistance +' \></td></tr>';
+     y +='<TR><TD><font color="#000000">Keep rallypoint slot(s) free: </td><Td><INPUT id=rallyclip type=text size=3 maxlength=2 value="'+Options.DFOptions.RallyClip+'" \></td></tr>';
+     y +='<TR><TD><INPUT id=pbreset type=checkbox '+(Options.DFOptions.UpdateEnabled?'CHECKED':'')+'\> <font color="#000000">Reset search every </td><td><INPUT id=pbresetint type=text size=4 maxlength=3 value='+Options.DFOptions.UpdateInterval+' \><font color="#000000">minutes</td></tr>';
+     y +='<TR><TD><font color="#000000"> Skip city search after </td><td><INPUT id=barbstopsearch type=text size=3 value='+Options.DFOptions.stopsearch+' \> <font color="#000000">tries.</td></tr>';
+     y +='<TR><TD><font color="#000000">Method : </td><Td> '+htmlSelector({distance:'Closest first', level:'Highest level first', lowlevel:'Lowest level first'}, Options.DFOptions.Method, 'id=pbmethod')+'</td></tr>';
+     y +='<TR><TD><font color="#000000">Knight priority : </td><td>'+htmlSelector({0:'Lowest combat skill', 1:'Highest combat skill'}, Options.DFOptions.knightselector, 'id=barbknight')+'</td></tr>';
+     y +='<tr><td><font color="#000000">Minimum knight Combat level to send: </td><td><input id=barbMinKnight type=text size=3 value='+Options.DFOptions.barbMinKnight+' \></td></tr>';
+     y +='<tr><td><font color="#000000">Maximum knight Combat level to send: </td><td><input id=barbMaxKnight type=text size=3 value='+Options.DFOptions.barbMaxKnight+' \></td></tr>';
+     y +='<tr><td><font color="#000000">Stop hitting Dark forests when Aetherstone in city is more than: </td><td><INPUT id=pbaothreshold type=text size=7 maxlength=8 value='+ Options.DFOptions.threshold +' \></td></tr>';
+     y +='<tr><td><font color="#000000">Add toggle button: </td><td><INPUT id=pbdftoggle type=checkbox '+(Options.DFOptions.dfbtns?'CHECKED':'')+' \></td></tr>';
      y+='</table></td></tr></table>';
        t.barboptions.getMainDiv().innerHTML = y;
        t.barboptions.show(true);
-
+    
     document.getElementById('pbcity').options.length=0;
     for (i=0;i<Seed.cities.length;i++){
         var o = document.createElement("option");
@@ -248,14 +241,14 @@ init : function (div){
         o.value = i+1;
         document.getElementById("pbcity").options.add(o);
     }
-
+       
     document.getElementById('pbdftoggle').addEventListener('click', function(){
         Options.DFOptions.dfbtns=document.getElementById('pbdftoggle').checked;
         saveOptions();
     },false);
     document.getElementById('pbpaintbarbs').addEventListener('click', function(){
             t.showBarbs(document.getElementById("pbcity").value,Seed.cities[document.getElementById("pbcity").value -1][1]);
-
+            
     },false);
     document.getElementById('pbresetbarbs').addEventListener('click', t.deletebarbs,false);
     document.getElementById('pbmethod').addEventListener('change', function(){
@@ -276,7 +269,7 @@ init : function (div){
         saveOptions();
     },false);
     document.getElementById('pbsendint').addEventListener('change', function(){
-        if(parseInt(document.getElementById('pbsendint').value) <5)
+        if(parseInt(document.getElementById('pbsendint').value) <5) 
             document.getElementById('pbsendint').value = 5; //Set minimum attack interval to 5 seconds
         Options.DFOptions.SendInterval=parseInt(document.getElementById('pbsendint').value);
         saveOptions();
@@ -291,7 +284,7 @@ init : function (div){
         Options.DFOptions.RallyClip=parseInt(document.getElementById('rallyclip').value);
         saveOptions();
     },false);
-
+    
     document.getElementById('barbMinKnight').addEventListener('change', function(){
         Options.DFOptions.barbMinKnight=parseInt(document.getElementById('barbMinKnight').value);
         saveOptions();
@@ -308,14 +301,14 @@ init : function (div){
         document.getElementById('barbstopsearch').value = parseInt(document.getElementById('barbstopsearch').value)>0?document.getElementById('barbstopsearch').value:1
         Options.DFOptions.stopsearch=parseInt(document.getElementById('barbstopsearch').value);
         saveOptions();
-    },false);
+    },false);  
   },
-
+  
     showBarbs: function (citynumber,cityname) {
         var t = Tabs.Barb;
         var popTradeRoutes = null;
         t.popTradeRoutes = new CPopup('pbShowBarbs', 0, 0, 500, 500, true, function() {clearTimeout (1000);});
-        var m = '<DIV style="max-height:460px; height:460px; overflow-y:auto"><TABLE align=center cellpadding=0 cellspacing=0 width=100% class="pbShowBarbs" id="pbBars">';
+        var m = '<DIV style="max-height:460px; height:460px; overflow-y:auto"><TABLE align=center cellpadding=0 cellspacing=0 width=100% class="pbShowBarbs" id="pbBars">';       
         t.popTradeRoutes.getMainDiv().innerHTML = '</table></div>' + m;
         t.popTradeRoutes.getTopDiv().innerHTML = '<TD align=center><B>Dark Forests for city: '+cityname+'</td>';
         t.paintBarbs(citynumber,cityname);
@@ -327,7 +320,7 @@ init : function (div){
 		if (t.barbArray[i] == undefined) return;
                 for (k=(t.barbArray[i].length-1);k>=0;k--){t._addTab(i,cityname,k+1,t.barbArray[i][k]['x'], t.barbArray[i][k]['y'],t.barbArray[i][k]['dist'], t.barbArray[i][k]['level']);}
         },
-
+      
   _addTab: function(citynumber,cityname,queueId,X,Y,dist,level){
      var t = Tabs.Barb;
      var row = document.getElementById('pbBars').insertRow(0);
@@ -342,22 +335,22 @@ init : function (div){
         t.deleteBarbElement(citynumber,queueId,cityname, true);
      }, false);
   },
-
+     
   _addTabHeader: function(citynumber,cityname) {
      var t = Tabs.Barb;
      var row = document.getElementById('pbBars').insertRow(0);
      row.vAlign = 'top';
-     row.insertCell(0).innerHTML = "City";
-     row.insertCell(1).innerHTML = "X";
-     row.insertCell(2).innerHTML = "Y";
-     row.insertCell(3).innerHTML = "Dist.";
-     row.insertCell(4).innerHTML = "Level";
+     row.insertCell(0).innerHTML ="<FONT color=Black>City";
+     row.insertCell(1).innerHTML = "<FONT color=Black>X";
+     row.insertCell(2).innerHTML = "<FONT color=Black>Y";
+     row.insertCell(3).innerHTML = "<FONT color=Black>Dist.";
+     row.insertCell(4).innerHTML = "<FONT color=Black>Level";
      row.insertCell(5).innerHTML = '<a class="button20" id="barbdelAll"><span>Delete ALL</span></a>';
      document.getElementById('barbdelAll').addEventListener('click', function(){
         t.deleteBarbsCity(citynumber,cityname);
      }, false);
-  },
-
+  },   
+       
   deleteBarbElement: function(citynumber,queueId,cityname,showFlag){
       var t = Tabs.Barb;
       var queueId = parseInt(queueId);
@@ -373,7 +366,7 @@ init : function (div){
           //logit("not found");
       }
   },
-
+      
   deleteBarbsCity: function(citynumber,cityname){
       var t = Tabs.Barb;
       var queueId = parseInt(queueId);
@@ -383,8 +376,8 @@ init : function (div){
       t.checkBarbData();
       t.showBarbs(citynumber,cityname);
       //reloadKOC();
-  },
-
+  },  
+  
   saveTroops: function(){
       var t = Tabs.Barb;
     for(i=0;i<15;i++){
@@ -394,11 +387,11 @@ init : function (div){
         if(parseIntNan(document.getElementById('dist'+i).value) > Options.DFOptions.MaxDistance)
             document.getElementById('dist'+i).value = Options.DFOptions.MaxDistance;
         Options.DFOptions.MinDistance[i+1] = parseIntNan(document.getElementById('Mindist'+i).value);
-           Options.DFOptions.Distance[i+1] = parseIntNan(document.getElementById('dist'+i).value);
+           Options.DFOptions.Distance[i+1] = parseIntNan(document.getElementById('dist'+i).value);             
      }
      saveOptions();
   },
-
+  
    deletebarbs: function(){
     for (i=1;i<=Seed.cities.length;i++){
         Options.DFOptions.Update[i][1] = 0;
@@ -412,22 +405,22 @@ init : function (div){
       var t = Tabs.Barb;
     if(!Options.DFOptions.Running) return;
       for (var citynum=1;citynum<=Seed.cities.length;citynum++){
-
+      
         // if(GM_getValue('Barbs_' + Seed.player['name'] + '_city_' + citynum + '_' + getServerId())) //Remove old auto barb data
             // GM_deleteValue('Barbs_' + Seed.player['name'] + '_city_' + citynum + '_' + getServerId());
-
+      
         if (!Options.DFOptions.Levels[citynum][0]) continue; //Skip city if not selected
-
+        
         t.barbArray[citynum] = [];
           var myarray = JSON2.parse(GM_getValue('DF_' + unsafeWindow.tvuid + '_city_' + citynum + '_' + getServerId(),"[]"));
           if (myarray == null) myarray = JSON2.parse(GM_getValue('DF_' + Seed.player['name'] + '_city_' + citynum + '_' + getServerId(),"[]"));
-
+        
         if ((myarray == undefined || myarray.length == 0) && t.searchRunning==false) {
               t.lookup=citynum;
             if(parseInt(Options.DFOptions.Update[t.lookup][1]) >= parseInt(Options.DFOptions.stopsearch)) continue; //Skip if search results are empty more than X times
             t.searchRunning = true;
               t.opt.startX = parseInt(Seed.cities[(citynum-1)][2]);
-              t.opt.startY = parseInt(Seed.cities[(citynum-1)][3]);
+              t.opt.startY = parseInt(Seed.cities[(citynum-1)][3]);  
               t.clickedSearch();
           }
         if (myarray){
@@ -441,7 +434,7 @@ init : function (div){
       }
         t.nextattack = setTimeout(t.getnextCity, parseInt((1+Options.DFOptions.SendInterval)*1000));
   },
-
+  
   toggleBarbState: function(obj){
      obj = document.getElementById('AttSearch');
     var t = Tabs.Barb;
@@ -460,7 +453,7 @@ init : function (div){
         t.nextattack = setTimeout(t.getnextCity, parseInt((1+Options.DFOptions.SendInterval)*1000));
     }
   },
-
+  
   barbing : function(){
        var t = Tabs.Barb;
        var city = t.city;
@@ -468,7 +461,7 @@ init : function (div){
        cityID = 'city' + citynumber;
        t.getAtkKnight(cityID);
        var slots = March.getMarchSlots(citynumber);
-
+      
       //Only send DF if city is not over 750K astone:: rewritten I want df's to farm items and level knights.. who cares about aetherstone?  -baos
       if (Seed.resources[cityID]["rec5"][0] > Number(Options.DFOptions.threshold)) {
          return;
@@ -481,8 +474,8 @@ init : function (div){
        if (Number(Number(March.getTotalSlots(citynumber))-Number(slots)) <= Number(Options.DFOptions.RallyClip)) return;
        if (t.knt.toSource() == "[]") return;
        var kid = t.knt[0].ID;
-
-
+       
+       
        if(t.barbArray[city] && t.barbArray[city].length > 0){
         var barbinfo = t.barbArray[city].shift();
        }else if(parseInt(Options.DFOptions.Update[city][1])==0){
@@ -493,10 +486,10 @@ init : function (div){
        };
        var check=0;
        var barblevel = parseInt(barbinfo.level);
-
+        
         if (Options.DFOptions.Levels[city][barbinfo.level])
             check=1;
-
+        
         if (barbinfo.dist < Options.DFOptions.MinDistance[barblevel] || barbinfo.dist > Options.DFOptions.Distance[barblevel]){
             check=0;
             GM_setValue('DF_' + unsafeWindow.tvuid + '_city_' + city + '_' + getServerId(), JSON2.stringify(t.barbArray[city]));
@@ -510,7 +503,7 @@ init : function (div){
             num_troops += trps[ii];
          }
          if (num_troops == 0) check = 0;
-
+         
        if (check == 0){
         t.barbArray[city].push(barbinfo);
         GM_setValue('DF_' + unsafeWindow.tvuid + '_city_' + city + '_' + getServerId(), JSON2.stringify(t.barbArray[city]));
@@ -528,7 +521,7 @@ init : function (div){
   getnextCity: function(){
     var t = Tabs.Barb;
     if(!Options.DFOptions.Running) return;
-
+    
     var city = t.city+1;
     if (city>Seed.cities.length){
         city=1;
@@ -550,20 +543,20 @@ init : function (div){
             t.barbArray[city] = []; //Clears data if last update was more than X minutes
             GM_deleteValue('DF_' + unsafeWindow.tvuid + '_city_' + city + '_' + getServerId())
             GM_deleteValue('DF_' + Seed.player['name'] + '_city_' + city + '_' + getServerId())
-
+			
             GM_setValue('DF_' + unsafeWindow.tvuid + '_city_' + city + '_' + getServerId(), JSON2.stringify(t.barbArray[city]));
         }
     }
-
+    
     if(Options.DFOptions.Levels[city][0]){
         t.barbing();
         t.nextattack = setTimeout(t.getnextCity, parseInt((1+Options.DFOptions.SendInterval)*1000));
     } else {
         t.getnextCity();
     }
-
+        
   },
-
+  
   getAtkKnight : function(cityID){
      var t = Tabs.Barb;
      t.knt = new Array();
@@ -585,7 +578,7 @@ init : function (div){
                                 return a == b ? 0 : (a < b ? -1 : 1);
                             });
   },
-
+    
   doBarb: function(cityID,counter,xcoord,ycoord,level,kid,trps){
           var t = Tabs.Barb;
                    	var dtime = new Date()
@@ -606,7 +599,7 @@ init : function (div){
 
           Options.DFOptions.BarbsTried++;
           document.getElementById('pberror1').innerHTML = 'Tries:'+ Options.DFOptions.BarbsTried;
-
+          
           March.addMarch(params, function(rslt){
            if(rslt.ok) {
                      Options.DFOptions.BarbsDone[counter]++;
@@ -641,15 +634,15 @@ init : function (div){
                      document.getElementById('pberror6').innerHTML = 'Bog errors:' + Options.DFOptions.BarbsFailedBog;
                      //unsafeWindow.Modal.showAlert(printLocalError((rslt.error_code || null), (rslt.msg || null), (rslt.feedback || null)))
                      }
-
-
+           
+           
            });
        //saveOptions();
   },
-
+  
   clickedSearch : function (){
     var t = Tabs.Barb;
-
+    
     t.opt.maxDistance = parseInt(Options.DFOptions.MaxDistance);
     t.opt.searchDistance = t.opt.maxDistance;
     t.opt.searchShape = 'circle';
@@ -661,26 +654,26 @@ init : function (div){
     var element = 'pddatacity'+(t.lookup-1);
    var element2 = 'pddataarray'+(t.lookup-1);
    document.getElementById(element2).innerHTML == '';
-
+   
 	t.BlockList = t.MapAjax.generateBlockList(t.firstX,t.firstY,t.opt.maxDistance);
-
+		
 	var counter = t.BlockList.length;
 	if (counter > MAX_BLOCKS) { counter = MAX_BLOCKS; }
 
 	var curX = t.firstX;
 	var curY = t.firstY;
     document.getElementById(element).innerHTML = 'Searching at '+ curX +','+ curY;
-
+		
 	t.Blocks = [];
 	for (var i=1;i<=counter;i++) {
 		t.Blocks.push(t.BlockList.shift());
 		t.blocksSearched++;
 	}
 	var blockString = t.Blocks.join("%2C");
-
+		
 	setTimeout (function(){t.MapAjax.LookupMap (blockString, t.mapCallback)}, MAP_DELAY);
   },
-
+  
   mapCallback : function (rslt){
     var t = Tabs.Barb;
     if (!t.searchRunning)
@@ -692,7 +685,7 @@ init : function (div){
 		for(x in Seed.queue_atkp[cityID]) {
 			tiles.push(Seed.queue_atkp[cityID][x].toTileId);
 		}
-
+	
 		for (k in map){
 			if (map[k].tileType==54 && Options.DFOptions.Levels[t.lookup][map[k].tileLevel]){
 				var dist = distance (t.opt.startX, t.opt.startY, map[k].xCoord, map[k].yCoord);
@@ -708,17 +701,17 @@ init : function (div){
 		if (rslt.BotCode && rslt.BotCode==999) { // map captcha
 			var dtime = new Date();
 			document.getElementById('dferrorlog').innerHTML = '<FONT color=red>'+dtime.toLocaleString()+' '+Cities.byID[Seed.cities[t.lookup-1][0]].name+' Green Map detected! </FONT>';
-		}
+		}	
 	}
-
+    
 	t.tilesSearched += (t.opt.searchDistance*t.opt.searchDistance);
 
 	var element0 = 'pdtotalcity'+(t.lookup-1);
-
+   
 	if (t.mapDat.length < 1) document.getElementById(element0).innerHTML = 'No Data';
 		else document.getElementById(element0).innerHTML =  'Forests:' + t.mapDat.length;
 	var element = 'pddatacity'+(t.lookup-1);
-
+	
 	var counter = t.BlockList.length;
 	if (counter==0 || t.curY==999) {
 		t.stopSearch('Found: ' + t.mapDat.length);
@@ -739,13 +732,13 @@ init : function (div){
 	var blockString = t.Blocks.join("%2C");
 	setTimeout (function(){t.MapAjax.LookupMap (blockString, t.mapCallback)}, MAP_DELAY);
   },
-
+  
   callStop: function(){
     var t = Tabs.Barb;
     t.curY=999;
     t.stopSearch('Found: ' + t.mapDat.length);
   },
-
+  
   stopSearch : function (msg){
     var t = Tabs.Barb;
     var element = 'pddatacity'+(t.lookup-1);
@@ -758,13 +751,13 @@ init : function (div){
     t.checkBarbData();
     return;
   },
-
+  
   hide : function (){
-
+  
   },
 
   show : function (){
-
+  
   },
 
 };
