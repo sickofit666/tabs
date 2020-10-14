@@ -262,7 +262,7 @@ Tabs.Boss = {
 		if (onoff) {
 			var div = document.createElement('div');
 			div.id = 'ptBossPop';
-			div.style.backgroundColor = '#fff';
+			div.style.backgroundColor = '#000000';
 			div.style.zindex = mainPop.div.zIndex + 2;
 			div.style.opacity = '1';
 			div.style.border = '3px outset black';
