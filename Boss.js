@@ -262,7 +262,7 @@ Tabs.Boss = {
 		if (onoff) {
 			var div = document.createElement('div');
 			div.id = 'ptBossPop';
-			div.style.backgroundColor = '#000000';
+			div.style.backgroundColor = '#A9A9A9';
 			div.style.zindex = mainPop.div.zIndex + 2;
 			div.style.opacity = '1';
 			div.style.border = '3px outset black';
@@ -288,7 +288,7 @@ Tabs.Boss = {
 				curtain = document.createElement('div');
 				curtain.id = 'ptBossCurtain';
 				curtain.style.zindex = mainPop.div.zIndex + 1;
-				curtain.style.backgroundColor = "#000000";
+				curtain.style.backgroundColor = "#A9A9A9";
 				curtain.style.opacity = '0.5';
 				curtain.style.display = 'block';
 				curtain.style.position = 'absolute';
