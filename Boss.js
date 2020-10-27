@@ -1,3 +1,4 @@
+
 /**************************** Boss Tab ****************************************/
 // @tabversion 2.0
 
@@ -21,7 +22,7 @@ Tabs.Boss = {
 	init : function (div){
 		var t = Tabs.Boss;
 		t.myDiv = div;
-		
+
 		if (!Options.BossOptions) {
 			Options.BossOptions = t.Options;
 		}
@@ -35,7 +36,7 @@ Tabs.Boss = {
 		t.CheckEvent(t.show);
 		t.CheckConquest();
 	},
-	
+
 	CheckEvent : function (notify) {
 		var t = Tabs.Boss;
 		t.CurrentBoss = uW.cm.BossModel.getEvent();
@@ -61,7 +62,7 @@ Tabs.Boss = {
 		}
 		if (notify) { notify(); }
 	},
-	
+
 	StartBossBattle : function(notify) {
 		var t = Tabs.Boss;
 		var params = uW.Object.clone(uW.g_ajaxparams);
@@ -189,14 +190,14 @@ Tabs.Boss = {
 			},
 		},true);
 	},
-	
+
 	show : function (){
 		var t = Tabs.Boss;
-		
+
 		if (!t.isBusy) {
 			var m = '<DIV class=divHeader align=center>'+uW.g_js_strings.boss.modal_title.toUpperCase()+'</div>';
 			m += '<div style="min-height:400px;">';
-			
+
 			if (t.ValidBoss) {
 				var str = t.CurrentBoss.bossArtString;
 				var now = uW.unixtime();
@@ -229,7 +230,7 @@ Tabs.Boss = {
 				m += '<br><div align=center>'+tx('No active event')+'</div>';
 			}
 			m += '</div>';
-			m += '<div align=center><div style="position:absolute;margin:5px;bottom:0px;width:'+GlobalOptions.btWinSize.x+'px;"><br><hr>';			
+			m += '<div align=center><div style="position:absolute;margin:5px;bottom:0px;width:'+GlobalOptions.btWinSize.x+'px;"><br><hr>';
 			t.myDiv.innerHTML = m;
 			ResetFrameSize('btMain',100,GlobalOptions.btWinSize.x);
 
@@ -245,7 +246,7 @@ Tabs.Boss = {
 			t.setCurtain(true);
 		}
 	},
-	
+
 	getBossTier : function(lvl) {
 		var t = Tabs.Boss;
 		for (var k=0;k<t.CurrentBoss.tiers.length;k++) {
@@ -255,13 +256,13 @@ Tabs.Boss = {
 		}
 		return (t.CurrentBoss.tiers.length-1); // must be highest level!
 	},
-	
+
 	setPopup: function (onoff) {
 		var t = Tabs.Boss;
 		if (onoff) {
 			var div = document.createElement('div');
 			div.id = 'ptBossPop';
-			div.style.backgroundColor = '#FFFFFF';
+			div.style.backgroundColor = '#808080';
 			div.style.zindex = mainPop.div.zIndex + 2;
 			div.style.opacity = '1';
 			div.style.border = '3px outset black';
@@ -287,7 +288,7 @@ Tabs.Boss = {
 				curtain = document.createElement('div');
 				curtain.id = 'ptBossCurtain';
 				curtain.style.zindex = mainPop.div.zIndex + 1;
-				curtain.style.backgroundColor = "#FFFFFF";
+				curtain.style.backgroundColor = "#000000";
 				curtain.style.opacity = '0.5';
 				curtain.style.display = 'block';
 				curtain.style.position = 'absolute';
@@ -320,7 +321,7 @@ Tabs.Boss = {
 		var t = Tabs.Boss;
 
 		t.championId = ById("btBossChamp").value;
-		
+
 		if ((t.championId!=0) && (t.TokensLeft>=t.CurrentBoss.cost)) {
 			t.isBusy = true;
 			t.setCurtain(true);
@@ -389,8 +390,6 @@ Tabs.Boss = {
 			}
 		},true);
 	},
-	
+
 }
-
-
 
