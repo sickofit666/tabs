@@ -144,8 +144,7 @@ Tabs.Joust = {
 				m += '<br><div align=center>'+tx('No active event')+'</div>';
 			}
 			m += '</div>';
-			m += '<div align=center><div style="position:absolute;margin:5px;bottom:0px;width:'+GlobalOptions.btWinSize.x+'px;"><br><hr>';
-                        m += ''+tx('This tool is inspired from tremendous contributions by Barbarbossa69 towards KoC Power Bot')+',&nbsp;<br><br></div>';
+			m += '<div align=center><div style="position:absolute;margin:5px;bottom:0px;width:'+GlobalOptions.btWinSize.x+'px;"><br><hr>';                       
 			t.myDiv.innerHTML = m;
 			ResetFrameSize('btMain',100,GlobalOptions.btWinSize.x);
 
@@ -165,7 +164,7 @@ Tabs.Joust = {
 		if (onoff) {
 			var div = document.createElement('div');
 			div.id = 'ptJoustPop';
-			div.style.backgroundColor = '#fff';
+			div.style.backgroundColor = '#808080';
 			div.style.zindex = mainPop.div.zIndex + 2;
 			div.style.opacity = '1';
 			div.style.border = '3px outset black';
