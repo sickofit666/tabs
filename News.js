@@ -1,7 +1,7 @@
 /*********************************** News TAB ***********************************/
 Tabs.News = {
    tabOrder: 10098,
-   tabColor : 'Blue',
+   tabColor : 'blue',
   tabDisabled : false,
   tabLabel : 'News',
   myDiv : null,
