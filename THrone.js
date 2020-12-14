@@ -2153,13 +2153,13 @@ Tabs.Throne = {
 		m += '<table width=100% cellpadding=0 cellspacing=0 class=xtab><tr><td>';
 		m += '<table cellpadding=0 cellspacing=0 class=xtab>';
 		m += '<tr><td style="padding-top:5px;"><b>'+tx('Effects')+'</b></td><td style="padding-top:5px;"><b>'+tx('Quality')+'</b></td></tr>';
-		m += '<tr><td><div id=btthroneJewelEffectFilter style="width:300px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:white;">';
+		m += '<tr><td><div id=btthroneJewelEffectFilter style="width:300px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:#000000;">';
 		for (k=0;k<t.JewelEffects.length;k++) {
 			var effect = t.JewelEffects[k];
 			m += '<INPUT id=btthroneJewelEffect_'+effect+' type=checkbox CHECKED />'+CM.ThroneController.getEffectName(effect)+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneJewelQualityFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btthroneJewelQualityFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:#000000;">';
 		for (k=0;k<t.JewelQuality.length;k++) {
 			m += '<INPUT id=btthroneJewelQuality_'+(k+1)+' type=checkbox CHECKED />'+t.JewelQuality[k]+'<br />';
 		}
