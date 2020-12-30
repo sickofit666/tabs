@@ -191,10 +191,7 @@ Tabs.Research = {
 			else { rowClass = 'oddRow'; }
 			m += '<tr style="height:25px;" class="'+rowClass+'"><td><img src="'+IMGURL+'tech2/'+h+'_s33.png" title="'+t.britoninfo[h].description+'" width=25></td><td id="btRbt_desc'+h+'" title="'+t.britoninfo[h].description+'" align=center>'+t.britoninfo[h].name+'</td><td align=center id="btRbtLevel'+h+'" class=tooldesc>&nbsp;</td><td align=center><INPUT id="btRbt_Auto'+h+'" class='+h+' type=checkbox '+(Options.ResearchOptions.BritonNumbers[h]?'CHECKED':'')+'></td></tr>';
 		}
-		m += '</table>';
-		m += '<div align=center><div style="position:absolute;margin:5px;bottom:0px;width:'+GlobalOptions.btWinSize.x+'px;"><br><hr>';
-		m += ''+tx('This tool is inspired from tremendous contributions by Barbarbossa69 towards KoC Power Bot')+',&nbsp;<br><br></div>';
-		m += '</td></tr></TABLE></div></div>';
+	
 
 		m += '</div><br>';
 
