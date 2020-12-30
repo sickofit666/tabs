@@ -109,7 +109,7 @@ Tabs.Joust = {
 					}
 					if (rslt2.report.s1.won) {
 						t.NumWins++;
-						div.innerHTML = '<span style="color:#080;">'+tx('Won against')+' '+rslt2.report.s0.nam+reward+'</span><br>'+div.innerHTML;
+						div.innerHTML = '<span style="color:#fff;">'+tx('Won against')+' '+rslt2.report.s0.nam+reward+'</span><br>'+div.innerHTML;
 					}
 					else {
 						div.innerHTML = '<span style="color:#800;">'+tx('Lost against')+' '+rslt2.report.s0.nam+reward+'</span><br>'+div.innerHTML;
