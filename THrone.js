@@ -306,7 +306,7 @@ Tabs.Throne = {
 			}
 			return;
 		}
-		
+
 		if (parseFloat(Version) < parseFloat(t.MinVersion)) {
 			div.innerHTML = '<center>'+tx('Minimum script version for Throne tab is '+t.MinVersion)+'</center>';
 			actionLog('Minimum script version for Throne tab is '+t.MinVersion,'THRONE');
@@ -390,7 +390,7 @@ Tabs.Throne = {
 				pallow = true;
 			}
 		}
-		
+
 		t.ThroneEffects = [];
 		for (var efx in CM.thronestats.tiers) {
 			if (t.ThroneEffects.indexOf(efx) < 0) t.ThroneEffects.push(efx);
@@ -496,7 +496,7 @@ Tabs.Throne = {
 
 		if (typeof exportFunction == 'function') { exportFunction(newSearchKeyPress,uW.cm.ThroneView, {defineAs:"searchKeyPress"}); }
 		else { uW.cm.ThroneView.searchKeyPress = newSearchKeyPress; };
-		
+
 		var oldRenderInventory = CM.ThroneView.renderInventory;
 		var newRenderInventory = function(l) {
 			oldRenderInventory(l);
@@ -1036,7 +1036,7 @@ Tabs.Throne = {
 				var raction = function () {
 					jQuery("#contextMenu").remove();
 					t.CheckThroneActive();
-					
+
 					uW.btTempArray = uWCloneInto([]);
 					uW.btTempArray.push(uW.kocThroneItems[l.id]);
 					CM.ThroneView.renderMassSalvageConfirm(uW.btTempArray)
@@ -1120,7 +1120,7 @@ Tabs.Throne = {
 			CM.ThroneView.searchKeyPress();
 		}
 	},
-	
+
 	SubThroneContextMenu : function (el,menutype,throneItem) {
 		var t = Tabs.Throne;
 		var trId = throneItem.id;
@@ -1407,7 +1407,7 @@ Tabs.Throne = {
 		var t = Tabs.Throne;
 
 		if (uW.isNewServer()) { return; }
-		
+
 		t.LoopCounter = t.LoopCounter + 1;
 
 		if (t.LoopCounter%2==0) { // refresh displays if any every 2 seconds
@@ -2562,37 +2562,37 @@ Tabs.Throne = {
 		m += '<table width=100% cellpadding=0 cellspacing=0 class=xtab><tr><td>';
 		m += '<table cellpadding=0 cellspacing=0 class=xtab>';
 		m += '<tr><td style="padding-top:5px;"><b>'+tx('Effects')+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.type+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.quality+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.level+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.jewel+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.faction+'</b></td></tr>';
-		m += '<tr><td><div id=btthroneSearchEffectFilter style="width:260px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:white;">';
+		m += '<tr><td><div id=btthroneSearchEffectFilter style="width:260px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:black;">';
 		for (var k=0;k<t.ThroneEffects.length;k++) {
 			var effect = t.ThroneEffects[k];
 			m += '<INPUT id=btthroneSearchEffect_'+effect+' type=checkbox CHECKED />'+CM.ThroneController.getEffectName(effect).replace("%1$s","nn%")+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchTypeFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btthroneSearchTypeFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<trTypes.length;k++) {
 			var type = trTypes[k];
 			m += '<INPUT id=btthroneSearchType_'+type+' type=checkbox CHECKED /><span style="text-transform:capitalize;">'+uW.g_js_strings.throneRoom[type]+'</span><br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchQualityFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btthroneSearchQualityFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<cardQuality.length;k++) {
 			var quality = cardQuality[k].toLowerCase();
 			m += '<INPUT id=btthroneSearchQuality_'+k+' type=checkbox CHECKED />'+uW.g_js_strings.throneRoom[quality]+'<br />';
 		}
 		m += '<INPUT id=btthroneSearchQualityUnique type=checkbox CHECKED />'+uW.g_js_strings.throneRoom.unique+'<br />';
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchLevelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btthroneSearchLevelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<=CM.MAX_MASTERS_TOKEN_LEVEL;k++) {
 			m += '<INPUT id=btthroneSearchLevel_'+k+' type=checkbox CHECKED />'+k+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchJewelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btthroneSearchJewelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		m += '<INPUT id=btthroneSearchJewelNone type=checkbox CHECKED />'+uW.g_js_strings.commonstr.none+'<br />';
 		for (var k=0;k<t.JewelQuality.length;k++) {
 			m += '<INPUT id=btthroneSearchJewel_'+(k+1)+' type=checkbox CHECKED />'+t.JewelQuality[k]+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchFactionFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btthroneSearchFactionFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<cardFaction.length;k++) {
 			var faction = cardFaction[k];
 			m += '<INPUT id=btthroneSearchFaction_'+faction+' type=checkbox CHECKED /><span style="text-transform:capitalize;">'+uW.g_js_strings.commonstr[faction]+'</span><br />';
@@ -3524,7 +3524,7 @@ Tabs.Throne = {
 		}
 		return Current;
 	},
-	
+
 	ClickedSearchCard : function (trId) {
 		var t = Tabs.Throne;
 		var throneItem = uW.kocThroneItems[trId];
