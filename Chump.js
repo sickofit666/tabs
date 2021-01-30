@@ -238,7 +238,7 @@ Tabs.Champ = {
 			}
 			return;
 		}
-		
+
 		if (parseFloat(Version) < parseFloat(t.MinVersion)) {
 			div.innerHTML = '<center>'+tx('Minimum script version for Champ tab is '+t.MinVersion)+'</center>';
 			actionLog('Minimum script version for Champ tab is '+t.MinVersion,'CHAMP');
@@ -1002,7 +1002,7 @@ Tabs.Champ = {
 		var t = Tabs.Champ;
 
 		if (uW.isNewServer()) { return; }
-		
+
 		t.LoopCounter = t.LoopCounter + 1;
 
 		if (t.LoopCounter%2==0) { // refresh displays if any every 2 seconds
@@ -1925,30 +1925,30 @@ Tabs.Champ = {
 		m += '<table width=100% cellpadding=0 cellspacing=0 class=xtab><tr><td>';
 		m += '<table cellpadding=0 cellspacing=0 class=xtab>';
 		m += '<tr><td style="padding-top:5px;"><b>'+tx('Effects')+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.type+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.quality+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.level+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.faction+'</b></td></tr>';
-		m += '<tr><td><div id=btchampSearchEffectFilter style="width:300px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:white;">';
+		m += '<tr><td><div id=btchampSearchEffectFilter style="width:300px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:black;">';
 		for (var k=0;k<t.ChampEffects.length;k++) {
 			var effect = t.ChampEffects[k];
 			m += '<INPUT id=btchampSearchEffect_'+effect+' type=checkbox CHECKED />'+CM.ChampionManager.getEffectName(effect)+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btchampSearchTypeFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btchampSearchTypeFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var type in chTypeStrings) {
 			m += '<INPUT id=btchampSearchType_'+(Number(type)+1)+' type=checkbox CHECKED /><span style="text-transform:capitalize;">'+uW.g_js_strings.champ[chTypeStrings[type]]+'</span><br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btchampSearchQualityFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btchampSearchQualityFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<=t.MAX_EFFECTS;k++) {
 			var quality = cardQuality[k].toLowerCase();
 			m += '<INPUT id=btchampSearchQuality_'+k+' type=checkbox CHECKED />'+uW.g_js_strings.throneRoom[quality]+'<br />';
 		}
 		m += '<INPUT id=btchampSearchQualityUnique type=checkbox CHECKED />'+uW.g_js_strings.throneRoom.unique+'<br />';
 		m += '</div></td>';
-		m += '<td><div id=btchampSearchLevelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btchampSearchLevelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<=CM.CHAMPION.MAX_LEVELS;k++) {
 			m += '<INPUT id=btchampSearchLevel_'+k+' type=checkbox CHECKED />'+k+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btchampSearchFactionFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
+		m += '<td><div id=btchampSearchFactionFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
 		for (var k=0;k<cardFaction.length;k++) {
 			var faction = cardFaction[k];
 			m += '<INPUT id=btchampSearchFaction_'+faction+' type=checkbox CHECKED /><span style="text-transform:capitalize;">'+uW.g_js_strings.commonstr[faction]+'</span><br />';
@@ -2684,6 +2684,7 @@ Tabs.Champ = {
 		var t = Tabs.Champ;
 		var Preset = t.PreviewPreset;
 		if (Preset>=100) {
+
 			// local preset
 			if (Options.ChampOptions.LocalPresets[Preset]) {
 				delete Options.ChampOptions.LocalPresets[Preset];
@@ -2998,7 +2999,7 @@ Tabs.Champ = {
 		}
 		return percent;
 	},
-	
+
 	ClickedSearchCard : function (chId) {
 		var t = Tabs.Champ;
 		var champItem = uW.kocChampionItems[chId];
@@ -5618,7 +5619,7 @@ Tabs.Champ = {
 			}
 			else { J.push(Indent+uW.g_js_strings.champ.vespers+": "+uW.g_js_strings.champ.damage+" "+CM.CHAMPION.getVespersDamageSetBonus().replace('+','')); }
 		}
-		
+
 		if (!gotchamp) {
 			if (htmlEffects) { J.push('<div><i>'+Indent+'None Available</i></div>'); }
 			else { J.push(Indent+'None Available'); }
