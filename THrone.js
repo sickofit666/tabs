@@ -44,11 +44,12 @@ Tabs.Throne = {
 	SalvageLog : [],
 	EventLog : [],
 	JewelImages : {
-		1: "http://i.imgur.com/SecBRT5.png",
-		2: "http://i.imgur.com/dnrId1I.png",
-		3: "http://i.imgur.com/fjgZUh9.png",
-		4: "http://i.imgur.com/h7tMQaB.png",
-		5: "http://i.imgur.com/BZSuCiN.png"
+	JewelImages : {
+		1: stimgUrl +"img/throneBlack.png",
+                2: stimgUrl +"img/throneGreen.png",
+                3: stimgUrl +"img/throneBlue.png",
+                4: stimgUrl +"img/thronePurple.png",
+                5: stimgUrl +"img/throneGolden.png"
 	},
 	Tick	: "data:image/png;base64,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",
 	Button	: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAAAQxSURBVFiF7ZZdbFNlGMd/pz09Pf1ut+4rdGVM1mZswJwEJAESQ0zkXsiqESXxyo8bFuKF8QqJ0Zh4IV6oFzJvRuJmJhDChYnTBAJEsyVmmE1gcFhbWkrH6NqefuwcL/oSZvzYChpu9iT/PO95nyfv/5ec85xzJNM0eZJheaLuawBrAGsAgLzaxomJiV6fz/ei0+HcpyhKFxJypVzRinrxh3w+/01PT89PjwIgrfQiGv9xPBTp6nrH6/LFisVioxbXSKXTADQ0BOgIdeByucoFvXAmnoh/2N/ff/k/A5icnNgbWtd+olqqhkbOjnLu8jnuLc1TVZeQLCBXZAKWALt6dzGwbwCP31NJppKHN23adPyxASYnJ/e2trad1a7fVI4cP8LPhV9wR9yozXZM1cTAQK7IFDM6+g2dqBTh2KvH6NvSRzqTPtzT0/PJIwOcP3++bX14/YR2Q2uJHY2h+TUsmy0YjQY4AZXa41sCCiDNS5jTJs3pZobeHmJr71biqfhz257ZNr4SwN9OQTAYfLeY01sGPx1Ec2vQB8YGAzqBCLAReAroqmVzgwm9kG5KM/j1IJk7d/F5fR+cPHlSqRvg0qVL3YpVefnbc6NczFyELUAYWAe0Aa1CLSK3iVoY6IYrhSsMfz+M1bQ+G+mKvFI3gM1mi92/d98/emEUOoRREGgEAoAP8IrsA/yiFhS9YTj96ynuZrMg8VbdAJi8oM1pzCzMQJMw8wIuHt5/FbCL7BQ1t+hrgqv5q8RTcxhLRl/dAOVyeWM8EacgF2qH2wFlWbYBViFZXD+o2wEHlGwlEpkEekFfyf+vALquy7qugyQ2JP68Xh7SMlkeri0WC6VyicX8Yv0AlWrllkN14MJVG7MyUFmmJcAATKAqVBF9ZaAEclXGq3qpVCv1AxiGMe5xeWi3t0MWWBQqALpQaZl0UVsEckAWwo4wLpsLE/NW3QAOh2PYrtorO8I7IAncAe4C88CCMHkAlRN78zVjMkAcdod2I0kSNpvty7oB9uzZc8G0mmf6N/bTLXfDTO1QksBtIC2g7oj1bVFLAL9Dh9zB9vbtLLF0LRqNflE3AGA0NTcddbqd1QObD9CSbYEp4DowC9wANKGbYm8WmILGTCOHNh9ClmTcHvf7nZ2dqZUA/vFjNPbd2BvJueRn8WScU9dOMSVPYQvZkAISurU2XoqhYMlZ0Od0okaU/V37aXW30tDcMBSLxV5byfxfAQBGRkYGU8nUxwv3FpjOTDNbmiVrzaJ47LVRWyzhNTxEXBGigSgOxUEgGBg6ePDg69Tm4/EAAE6fOf18Yi7xXiFX2J0v5EGGYrUIEjhsTqyGBUVWUF3qbw3Bho9iA7ETqzFeNYAIx9jY2Evz2fk3c7nc08V8EcM0UFUVt9et+f3+z3fu3PlVKBRK1mNeD8D/Fk/8r3gN4A/o86RnMMwtFQAAAABJRU5ErkJggg==",
@@ -306,7 +307,7 @@ Tabs.Throne = {
 			}
 			return;
 		}
-
+		
 		if (parseFloat(Version) < parseFloat(t.MinVersion)) {
 			div.innerHTML = '<center>'+tx('Minimum script version for Throne tab is '+t.MinVersion)+'</center>';
 			actionLog('Minimum script version for Throne tab is '+t.MinVersion,'THRONE');
@@ -390,7 +391,7 @@ Tabs.Throne = {
 				pallow = true;
 			}
 		}
-
+		
 		t.ThroneEffects = [];
 		for (var efx in CM.thronestats.tiers) {
 			if (t.ThroneEffects.indexOf(efx) < 0) t.ThroneEffects.push(efx);
@@ -496,7 +497,7 @@ Tabs.Throne = {
 
 		if (typeof exportFunction == 'function') { exportFunction(newSearchKeyPress,uW.cm.ThroneView, {defineAs:"searchKeyPress"}); }
 		else { uW.cm.ThroneView.searchKeyPress = newSearchKeyPress; };
-
+		
 		var oldRenderInventory = CM.ThroneView.renderInventory;
 		var newRenderInventory = function(l) {
 			oldRenderInventory(l);
@@ -1036,7 +1037,7 @@ Tabs.Throne = {
 				var raction = function () {
 					jQuery("#contextMenu").remove();
 					t.CheckThroneActive();
-
+					
 					uW.btTempArray = uWCloneInto([]);
 					uW.btTempArray.push(uW.kocThroneItems[l.id]);
 					CM.ThroneView.renderMassSalvageConfirm(uW.btTempArray)
@@ -1120,7 +1121,7 @@ Tabs.Throne = {
 			CM.ThroneView.searchKeyPress();
 		}
 	},
-
+	
 	SubThroneContextMenu : function (el,menutype,throneItem) {
 		var t = Tabs.Throne;
 		var trId = throneItem.id;
@@ -1407,7 +1408,7 @@ Tabs.Throne = {
 		var t = Tabs.Throne;
 
 		if (uW.isNewServer()) { return; }
-
+		
 		t.LoopCounter = t.LoopCounter + 1;
 
 		if (t.LoopCounter%2==0) { // refresh displays if any every 2 seconds
@@ -2153,13 +2154,13 @@ Tabs.Throne = {
 		m += '<table width=100% cellpadding=0 cellspacing=0 class=xtab><tr><td>';
 		m += '<table cellpadding=0 cellspacing=0 class=xtab>';
 		m += '<tr><td style="padding-top:5px;"><b>'+tx('Effects')+'</b></td><td style="padding-top:5px;"><b>'+tx('Quality')+'</b></td></tr>';
-		m += '<tr><td><div id=btthroneJewelEffectFilter style="width:300px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:#000000;">';
+		m += '<tr><td><div id=btthroneJewelEffectFilter style="width:300px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:white;">';
 		for (k=0;k<t.JewelEffects.length;k++) {
 			var effect = t.JewelEffects[k];
 			m += '<INPUT id=btthroneJewelEffect_'+effect+' type=checkbox CHECKED />'+CM.ThroneController.getEffectName(effect)+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneJewelQualityFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:#000000;">';
+		m += '<td><div id=btthroneJewelQualityFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
 		for (k=0;k<t.JewelQuality.length;k++) {
 			m += '<INPUT id=btthroneJewelQuality_'+(k+1)+' type=checkbox CHECKED />'+t.JewelQuality[k]+'<br />';
 		}
@@ -2562,37 +2563,37 @@ Tabs.Throne = {
 		m += '<table width=100% cellpadding=0 cellspacing=0 class=xtab><tr><td>';
 		m += '<table cellpadding=0 cellspacing=0 class=xtab>';
 		m += '<tr><td style="padding-top:5px;"><b>'+tx('Effects')+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.type+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.quality+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.level+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.jewel+'</b></td><td style="padding-top:5px;"><b>'+uW.g_js_strings.commonstr.faction+'</b></td></tr>';
-		m += '<tr><td><div id=btthroneSearchEffectFilter style="width:260px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:black;">';
+		m += '<tr><td><div id=btthroneSearchEffectFilter style="width:260px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color:white;">';
 		for (var k=0;k<t.ThroneEffects.length;k++) {
 			var effect = t.ThroneEffects[k];
 			m += '<INPUT id=btthroneSearchEffect_'+effect+' type=checkbox CHECKED />'+CM.ThroneController.getEffectName(effect).replace("%1$s","nn%")+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchTypeFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
+		m += '<td><div id=btthroneSearchTypeFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
 		for (var k=0;k<trTypes.length;k++) {
 			var type = trTypes[k];
 			m += '<INPUT id=btthroneSearchType_'+type+' type=checkbox CHECKED /><span style="text-transform:capitalize;">'+uW.g_js_strings.throneRoom[type]+'</span><br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchQualityFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
+		m += '<td><div id=btthroneSearchQualityFilter style="width:150px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
 		for (var k=0;k<cardQuality.length;k++) {
 			var quality = cardQuality[k].toLowerCase();
 			m += '<INPUT id=btthroneSearchQuality_'+k+' type=checkbox CHECKED />'+uW.g_js_strings.throneRoom[quality]+'<br />';
 		}
 		m += '<INPUT id=btthroneSearchQualityUnique type=checkbox CHECKED />'+uW.g_js_strings.throneRoom.unique+'<br />';
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchLevelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
+		m += '<td><div id=btthroneSearchLevelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
 		for (var k=0;k<=CM.MAX_MASTERS_TOKEN_LEVEL;k++) {
 			m += '<INPUT id=btthroneSearchLevel_'+k+' type=checkbox CHECKED />'+k+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchJewelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
+		m += '<td><div id=btthroneSearchJewelFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
 		m += '<INPUT id=btthroneSearchJewelNone type=checkbox CHECKED />'+uW.g_js_strings.commonstr.none+'<br />';
 		for (var k=0;k<t.JewelQuality.length;k++) {
 			m += '<INPUT id=btthroneSearchJewel_'+(k+1)+' type=checkbox CHECKED />'+t.JewelQuality[k]+'<br />';
 		}
 		m += '</div></td>';
-		m += '<td><div id=btthroneSearchFactionFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: black;">';
+		m += '<td><div id=btthroneSearchFactionFilter style="width:100px;border:2px solid #ccc;height:96px;overflow-y:scroll;background-color: white;">';
 		for (var k=0;k<cardFaction.length;k++) {
 			var faction = cardFaction[k];
 			m += '<INPUT id=btthroneSearchFaction_'+faction+' type=checkbox CHECKED /><span style="text-transform:capitalize;">'+uW.g_js_strings.commonstr[faction]+'</span><br />';
@@ -3524,7 +3525,7 @@ Tabs.Throne = {
 		}
 		return Current;
 	},
-
+	
 	ClickedSearchCard : function (trId) {
 		var t = Tabs.Throne;
 		var throneItem = uW.kocThroneItems[trId];
